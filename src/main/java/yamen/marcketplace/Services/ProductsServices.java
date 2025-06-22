@@ -89,4 +89,9 @@ public class ProductsServices {
     }
 
 
+    public Products getProductById(UUID id){
+        return productsRepo.findById(id).orElseThrow(() -> new RuntimeException("Product not found"));
+    }
+
+
 }
