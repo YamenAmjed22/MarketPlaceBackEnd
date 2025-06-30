@@ -4,10 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RestController;
 import yamen.marcketplace.Controllers.CategoryDTO;
-import yamen.marcketplace.Models.Categories;
-import yamen.marcketplace.Repos.CategoriesRepo;
+import yamen.marcketplace.Entity.Categories;
+import yamen.marcketplace.Repository.CategoriesRepo;
 
 import java.util.List;
 

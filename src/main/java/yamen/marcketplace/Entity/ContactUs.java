@@ -1,5 +1,7 @@
-package yamen.marcketplace.Models;
+package yamen.marcketplace.Entity;
 
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -12,14 +14,18 @@ import java.util.UUID;
 @Entity
 @Getter
 @Setter
-public class FilesUploaded {
+public class ContactUs {
 
     @Id
     @GeneratedValue(generator = "UUIDWay")
     @GenericGenerator(name = "UUIDWay", strategy = "org.hibernate.id.UUIDGenerator")
     private UUID id;
-
-    private String fileName;
-    private String filePath;
-    private String fileType;
+    @Column( nullable = false)
+    private String name;
+    @Column(nullable = false)
+    private String email;
+    @Column(nullable = false)
+    private  String subject;
+    @Column(nullable = false)
+    private String message;
 }

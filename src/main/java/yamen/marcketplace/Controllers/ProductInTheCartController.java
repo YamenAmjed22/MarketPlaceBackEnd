@@ -4,8 +4,10 @@ package yamen.marcketplace.Controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
-import yamen.marcketplace.Models.ProductInTheCart;
+import yamen.marcketplace.Entity.ProductInTheCart;
 import yamen.marcketplace.Services.ProductInTheCartService;
 
 import java.util.List;
@@ -22,12 +24,20 @@ public class ProductInTheCartController {
     @PostMapping
     public ResponseEntity<ProductInTheCart> addProductInTheCart(@RequestBody ProductInTheCart productInTheCart) {
 
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userName = authentication.getName();
+        productInTheCart.setUserName(userName);
         return productInTheCartService.addNewProductToTheCart(productInTheCart);
     }
 
     @GetMapping
     public ResponseEntity<List<ProductInTheCart>> getAllProductsInTheCart() {
-        return productInTheCartService.getAllProductsInTheCart();
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userName = authentication.getName();
+        List<ProductInTheCart> products = productInTheCartService.getAllProductsInTheCartForLoginUser(userName);
+        return new ResponseEntity<>(products, HttpStatus.OK);
+
     }
 
     @DeleteMapping("/{id}")

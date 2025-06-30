@@ -45,9 +45,7 @@ public class SecurityConfiguration {
                         "/api/categories/**",
                         "/api/contact",
                         "/api/contact/**",
-                        "/api/uploadfile/**",    // ✅ Wildcard match for all uploadfile-related endpoints
-                        "/api/MyCart",
-                        "/api/MyCart/**"
+                        "/api/uploadfile/**"    // ✅ Wildcard match for all uploadfile-related endpoint
                 )
                 .permitAll()
                 .anyRequest().authenticated()

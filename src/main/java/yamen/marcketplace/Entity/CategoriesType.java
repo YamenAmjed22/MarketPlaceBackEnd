@@ -1,4 +1,4 @@
-package yamen.marcketplace.Models;
+package yamen.marcketplace.Entity;
 
 
 public enum CategoriesType {

@@ -6,11 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
-import yamen.marcketplace.Models.ContactUs;
-import yamen.marcketplace.Repos.ContactUsRepo;
-
-import java.net.http.HttpRequest;
+import yamen.marcketplace.Entity.ContactUs;
+import yamen.marcketplace.Repository.ContactUsRepo;
 
 @Service
 public class ContactServices {

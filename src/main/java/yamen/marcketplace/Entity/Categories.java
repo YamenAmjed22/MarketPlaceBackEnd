@@ -1,4 +1,4 @@
-package yamen.marcketplace.Models;
+package yamen.marcketplace.Entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.engine.internal.Nullability;
 
 import java.util.List;
 import java.util.UUID;

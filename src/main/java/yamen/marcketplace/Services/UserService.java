@@ -7,11 +7,11 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import yamen.marcketplace.Models.LoginDTO;
-import yamen.marcketplace.Models.OtpCheckRequestDto;
-import yamen.marcketplace.Models.Role;
-import yamen.marcketplace.Models.User;
-import yamen.marcketplace.Repos.UserRepo;
+import yamen.marcketplace.Entity.LoginDTO;
+import yamen.marcketplace.Entity.OtpCheckRequestDto;
+import yamen.marcketplace.Entity.Role;
+import yamen.marcketplace.Entity.User;
+import yamen.marcketplace.Repository.UserRepo;
 
 import java.util.Optional;
 import java.util.Random;

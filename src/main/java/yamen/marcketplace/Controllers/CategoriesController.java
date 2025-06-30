@@ -3,7 +3,7 @@ package yamen.marcketplace.Controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import yamen.marcketplace.Models.Categories;
+import yamen.marcketplace.Entity.Categories;
 import yamen.marcketplace.Services.CategoriesServices;
 
 import java.util.List;

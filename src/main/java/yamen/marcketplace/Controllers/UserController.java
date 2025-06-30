@@ -1,16 +1,13 @@
 package yamen.marcketplace.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import yamen.marcketplace.Models.LoginDTO;
-import yamen.marcketplace.Models.OtpCheckRequestDto;
-import yamen.marcketplace.Models.User;
-import yamen.marcketplace.Repos.UserRepo;
+import yamen.marcketplace.Entity.LoginDTO;
+import yamen.marcketplace.Entity.OtpCheckRequestDto;
+import yamen.marcketplace.Entity.User;
+import yamen.marcketplace.Repository.UserRepo;
 import yamen.marcketplace.Services.UserService;
-
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
