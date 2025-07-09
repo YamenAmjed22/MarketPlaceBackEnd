@@ -8,6 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import yamen.marcketplace.Entity.ProductInTheCart;
+import yamen.marcketplace.Services.JwtService;
 import yamen.marcketplace.Services.ProductInTheCartService;
 
 import java.util.List;
@@ -20,6 +21,8 @@ public class ProductInTheCartController {
 
     @Autowired
     private ProductInTheCartService productInTheCartService;
+    @Autowired
+    private JwtService jwtService;
 
     @PostMapping
     public ResponseEntity<ProductInTheCart> addProductInTheCart(@RequestBody ProductInTheCart productInTheCart) {

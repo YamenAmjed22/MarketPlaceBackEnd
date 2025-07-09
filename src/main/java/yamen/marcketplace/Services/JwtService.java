@@ -45,8 +45,6 @@ public class JwtService {
         extraClaims.put("phone", userDetails.getPhone());
         extraClaims.put("isValid", userDetails.isValid());
         extraClaims.put("role", userDetails.getRole().name());
-
-
         return generateToken(extraClaims, userDetails);
     }
 

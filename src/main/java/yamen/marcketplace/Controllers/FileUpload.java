@@ -30,7 +30,7 @@ public class FileUpload {
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<?> addNewFile( @RequestPart("file") MultipartFile imageFile) {
 
-        return productsServices.saveImage(imageFile);
+         return productsServices.saveImage(imageFile);
     }
 
 
