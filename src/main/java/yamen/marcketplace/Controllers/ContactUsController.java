@@ -19,4 +19,9 @@ public class ContactUsController {
     public ResponseEntity<?> addNewContact(@RequestBody ContactUs contactUs) {
         return contactUsService.sendContact(contactUs);
     }
+    @GetMapping("/contact")
+    public ResponseEntity<?> getAllContacts() {
+        return contactUsService.getAllContacts();
+    }
+
 }

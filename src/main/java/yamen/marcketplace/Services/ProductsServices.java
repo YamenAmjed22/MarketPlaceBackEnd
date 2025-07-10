@@ -58,7 +58,6 @@ public class ProductsServices {
         }
     }
 
-
     public ResponseEntity<Products> addNewProduct(ProductDTO productDTO) {
         Products newProduct = new Products();
         newProduct.setProductName(productDTO.getProductName());

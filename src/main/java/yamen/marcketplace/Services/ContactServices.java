@@ -35,5 +35,9 @@ public class ContactServices {
 
     }
 
+    public ResponseEntity<?> getAllContacts() {
+        return new ResponseEntity<>(contactUsRepo.findAll(), HttpStatus.OK);
+    }
+
 }
 

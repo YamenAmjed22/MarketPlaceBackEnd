@@ -1,5 +1,7 @@
 package yamen.marcketplace.Services;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +30,9 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
     @Autowired
     private JwtService jwtService;
+    @Getter
+    @Setter
+    private User user;
 
 
 
@@ -88,7 +93,7 @@ public class UserService {
 
     public ResponseEntity<?> loginUser(LoginDTO  loginRequest) {
         Optional<User> registeredUser = userRepo.findByUserName(loginRequest.getUserName());
-
+            user = registeredUser.orElseThrow();
         if (registeredUser.isPresent()) {
             if (passwordEncoder.matches(loginRequest.getPassword(),registeredUser.get().getPassword()) && registeredUser.get().isValid()) {
                 String token = jwtService.generateToken(registeredUser.get());

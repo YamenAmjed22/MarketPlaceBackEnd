@@ -2,6 +2,8 @@ package yamen.marcketplace.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import yamen.marcketplace.Entity.LoginDTO;
 import yamen.marcketplace.Entity.OtpCheckRequestDto;
@@ -32,6 +34,14 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginDTO loginRequest) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        // Print username
+        System.out.println("User: " + auth.getName());
+
+        // Print roles
+        System.out.println("Roles:");
+        auth.getAuthorities().forEach(authority -> System.out.println(authority.getAuthority()));
        return userService.loginUser(loginRequest);
     }
 }
