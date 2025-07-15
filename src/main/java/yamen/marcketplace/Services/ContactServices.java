@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import yamen.marcketplace.Entity.ContactUs;
 import yamen.marcketplace.Repository.ContactUsRepo;
 
+import java.util.UUID;
+
 @Service
 public class ContactServices {
 
@@ -37,6 +39,13 @@ public class ContactServices {
 
     public ResponseEntity<?> getAllContacts() {
         return new ResponseEntity<>(contactUsRepo.findAll(), HttpStatus.OK);
+    }
+
+    public ResponseEntity<ContactUs> deleteContactById(UUID id) {
+        ContactUs myMessage = contactUsRepo.findById(id).orElse(null);
+        contactUsRepo.deleteById(id);
+        return new ResponseEntity<>(myMessage, HttpStatus.OK) ;
+
     }
 
 }
