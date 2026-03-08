@@ -25,8 +25,9 @@ public class UserController {
 
     @PostMapping("/addnewuser")
     public ResponseEntity<?> addNewUser(@RequestBody User newUser) {
-            return UserService.addNewUser(newUser);
+        return UserService.addNewUser(newUser);
     }
+
     @PostMapping("/ckeckotp")
     public ResponseEntity<?> checkOtp(@RequestBody OtpCheckRequestDto otpCheckRequestDto) {
         return userService.checkOtp(otpCheckRequestDto);
@@ -34,14 +35,13 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginDTO loginRequest) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-        // Print username
-        System.out.println("User: " + auth.getName());
+//        what is the user in security context ?
 
-        // Print roles
-        System.out.println("Roles:");
-        auth.getAuthorities().forEach(authority -> System.out.println(authority.getAuthority()));
-       return userService.loginUser(loginRequest);
+//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//        System.out.println("User: " + auth.getName()); *user name
+//        System.out.println("Roles:");    *role
+//        auth.getAuthorities().forEach(authority -> System.out.println(authority.getAuthority()));
+        return userService.loginUser(loginRequest);
     }
 }

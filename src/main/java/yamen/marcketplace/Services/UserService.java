@@ -93,18 +93,20 @@ public class UserService {
 
     public ResponseEntity<?> loginUser(LoginDTO  loginRequest) {
         Optional<User> registeredUser = userRepo.findByUserName(loginRequest.getUserName());
-            user = registeredUser.orElseThrow();
+
+//        user = registeredUser.orElseThrow();
+
         if (registeredUser.isPresent()) {
             if (passwordEncoder.matches(loginRequest.getPassword(),registeredUser.get().getPassword()) && registeredUser.get().isValid()) {
                 String token = jwtService.generateToken(registeredUser.get());
                 return new ResponseEntity<>("\""+ token+"\"" , HttpStatus.OK);
             }
             else {
-                return new ResponseEntity<>("\"Your username and password are incorrect.\"", HttpStatus.UNAUTHORIZED);
+                return new ResponseEntity<>("\"Your Username and Password are not correct\"", HttpStatus.UNAUTHORIZED);
             }
         }
         else {
-            return new ResponseEntity<>("\"Your username is not correct.\"", HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>("\"Your Username or Password is not correct\"", HttpStatus.UNAUTHORIZED);
         }
     }
 
