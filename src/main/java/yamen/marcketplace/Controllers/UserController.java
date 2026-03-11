@@ -2,14 +2,14 @@ package yamen.marcketplace.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
-import yamen.marcketplace.Entity.LoginDTO;
-import yamen.marcketplace.Entity.OtpCheckRequestDto;
+import yamen.marcketplace.DTO.LoginDTO;
+import yamen.marcketplace.DTO.OtpCheckRequestDto;
 import yamen.marcketplace.Entity.User;
 import yamen.marcketplace.Repository.UserRepo;
 import yamen.marcketplace.Services.UserService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -43,5 +43,10 @@ public class UserController {
 //        System.out.println("Roles:");    *role
 //        auth.getAuthorities().forEach(authority -> System.out.println(authority.getAuthority()));
         return userService.loginUser(loginRequest);
+    }
+
+    @GetMapping("getall")
+    public List<User> getAllUsers() {
+        return userService.getAllUsers();
     }
 }

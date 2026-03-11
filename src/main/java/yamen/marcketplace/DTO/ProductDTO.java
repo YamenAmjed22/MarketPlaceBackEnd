@@ -1,4 +1,4 @@
-package yamen.marcketplace.Entity;
+package yamen.marcketplace.DTO;
 
 import lombok.Getter;
 import lombok.Setter;

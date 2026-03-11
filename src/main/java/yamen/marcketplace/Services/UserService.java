@@ -9,12 +9,13 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import yamen.marcketplace.Entity.LoginDTO;
-import yamen.marcketplace.Entity.OtpCheckRequestDto;
-import yamen.marcketplace.Entity.Role;
+import yamen.marcketplace.DTO.LoginDTO;
+import yamen.marcketplace.DTO.OtpCheckRequestDto;
+import yamen.marcketplace.Enum.Role;
 import yamen.marcketplace.Entity.User;
 import yamen.marcketplace.Repository.UserRepo;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
@@ -110,6 +111,27 @@ public class UserService {
         }
     }
 
+    public ResponseEntity<?> loginAdminUser(LoginDTO  loginRequest) {
+        Optional<User> registeredUser = userRepo.findByUserName(loginRequest.getUserName());
 
+//        user = registeredUser.orElseThrow();
+
+        if (registeredUser.isPresent() && registeredUser.get().getRole().equals(Role.ROLE_ADMIN) ) {
+            if (passwordEncoder.matches(loginRequest.getPassword(),registeredUser.get().getPassword()) && registeredUser.get().isValid()) {
+                String token = jwtService.generateToken(registeredUser.get());
+                return new ResponseEntity<>("\""+ token+"\"" , HttpStatus.OK);
+            }
+            else {
+                return new ResponseEntity<>("\"Your Username and Password are not correct\"", HttpStatus.UNAUTHORIZED);
+            }
+        }
+        else {
+            return new ResponseEntity<>("\"you don't have permission !! \"", HttpStatus.UNAUTHORIZED);
+        }
+    }
+
+    public List<User> getAllUsers(){
+        return userRepo.findAll();
+    }
 
 }

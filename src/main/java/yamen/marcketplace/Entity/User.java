@@ -7,6 +7,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import yamen.marcketplace.Enum.Role;
 
 import java.util.Collection;
 import java.util.List;

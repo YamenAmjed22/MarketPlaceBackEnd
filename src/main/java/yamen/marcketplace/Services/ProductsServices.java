@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import yamen.marcketplace.Entity.Categories;
 import yamen.marcketplace.Entity.FilesUploaded;
-import yamen.marcketplace.Entity.ProductDTO;
+import yamen.marcketplace.DTO.ProductDTO;
 import yamen.marcketplace.Entity.Products;
 import yamen.marcketplace.Repository.CategoriesRepo;
 import yamen.marcketplace.Repository.FileUploadedRepo;

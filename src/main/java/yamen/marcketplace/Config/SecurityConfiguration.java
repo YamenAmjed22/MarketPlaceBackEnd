@@ -49,7 +49,11 @@ public class SecurityConfiguration {
                         "/api/categories/**",
                         "/api/contact",
                         "/api/contact/**",
-                        "/api/uploadfile/**"    // ✅ Wildcard match for all uploadfile-related endpoint
+                        "/api/uploadfile/**",
+                        "/admin/login",
+                        "api/getall"
+                        // ✅ Wildcard match for all uploadfile-related endpoint
+
                 )
                 .permitAll()
                 .anyRequest().authenticated()

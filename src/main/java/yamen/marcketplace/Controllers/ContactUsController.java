@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import yamen.marcketplace.Entity.ContactUs;
-import yamen.marcketplace.Entity.Role;
+import yamen.marcketplace.Enum.Role;
 import yamen.marcketplace.Entity.User;
 import yamen.marcketplace.Services.ContactServices;
 import yamen.marcketplace.Services.UserService;
