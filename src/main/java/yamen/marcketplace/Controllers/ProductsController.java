@@ -33,6 +33,7 @@ public class ProductsController {
     public Products getProductById(@PathVariable UUID id) {
        return  productsServices.getProductById(id);
     }
+
     @PostMapping()
     public ResponseEntity<Products> addNewProduct(@RequestBody ProductDTO productDTO) {
 

@@ -68,9 +68,6 @@ public class ProductsServices {
         newProduct.setStockQuantity(productDTO.getStockQuantity());
         newProduct.setRating(productDTO.getRating());
 
-
-
-
         // ✅ Correct way: Fetch the category from DB to avoid TransientObjectException
         Categories category = categoriesRepo.findById(productDTO.getCategoryId())
                 .orElseThrow(() -> new RuntimeException("Category not found"));
