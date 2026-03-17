@@ -3,6 +3,7 @@ package yamen.marcketplace.Controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import yamen.marcketplace.Entity.ContactUs;
 import yamen.marcketplace.Enum.Role;
@@ -33,20 +34,13 @@ public class ContactUsController {
         return contactUsService.getAllContacts();
     }
     @DeleteMapping("/contact/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<ContactUs> deleteContact(@PathVariable UUID id) {
-        User user = userService.getUser();
-        if (user == null) {
-            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-        }
-        else {
-            if (user.getRole() == Role.ROLE_ADMIN){
-                return contactUsService.deleteContactById(id);
 
-            }
-            else {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build() ;
-            }
+        return contactUsService.deleteContactById(id);
+
+
         }
     }
 
-}
+

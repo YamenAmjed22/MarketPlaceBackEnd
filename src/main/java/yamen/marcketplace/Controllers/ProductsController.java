@@ -3,6 +3,7 @@ package yamen.marcketplace.Controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import yamen.marcketplace.DTO.ProductDTO;
 import yamen.marcketplace.Entity.Products;
@@ -35,27 +36,20 @@ public class ProductsController {
     }
 
     @PostMapping()
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Products> addNewProduct(@RequestBody ProductDTO productDTO) {
 
         return productsServices.addNewProduct(productDTO);
     }
 
     @DeleteMapping("/{productId}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<?> deleteProduct(@PathVariable("productId") UUID productId) {
-        User user = userService.getUser();
-        if (user == null) {
-            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-        }
-        else {
-            if (user.getRole() == Role.ROLE_ADMIN){
+
                 return productsServices.deleteProductById(productId);
 
             }
-            else {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build() ;
-            }
-        }
-    }
+
 
 
 
