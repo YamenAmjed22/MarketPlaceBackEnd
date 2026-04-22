@@ -18,12 +18,14 @@ public class WhoIAmService {
         String userAgent = request.getHeader("User-Agent");
         String token = request.getHeader("Authorization");
         String contentType = request.getHeader("Content-Type");
+        String status = "success";
 
         response.put("ip", ip);
         response.put("userAgent", userAgent);
         response.put("token", token);
         response.put("contentType", contentType);
         response.put("message", message);
+        response.put("status", status);
 
         return response;
     }
