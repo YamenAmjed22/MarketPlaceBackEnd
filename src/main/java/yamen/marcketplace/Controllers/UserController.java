@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import yamen.marcketplace.DTO.LoginDTO;
 import yamen.marcketplace.DTO.OtpCheckRequestDto;
 import yamen.marcketplace.Entity.User;
-import yamen.marcketplace.Repository.UserRepo;
 import yamen.marcketplace.Services.UserService;
 
 import java.util.List;
@@ -18,10 +17,9 @@ public class UserController {
 
     @Autowired
     private UserService UserService;
+
     @Autowired
     private UserService userService;
-    @Autowired
-    private UserRepo userRepo;
 
     @PostMapping("/addnewuser")
     public ResponseEntity<?> addNewUser(@RequestBody User newUser) {

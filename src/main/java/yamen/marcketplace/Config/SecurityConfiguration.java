@@ -51,7 +51,8 @@ public class SecurityConfiguration {
                         "/api/contact/**",
                         "/api/uploadfile/**",
                         "/admin/login",
-                        "api/getall"
+                        "api/getall",
+                        "api/who-i-am"
                         // ✅ Wildcard match for all uploadfile-related endpoint
 
                 )
